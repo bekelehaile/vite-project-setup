@@ -3,6 +3,19 @@
         <HomeIcon class="h-5 w-5 text-blue-500" />
         <BeakerIcon class="h-5 w-5 text-blue-500" />
         <div>My name is {{ name }}</div>
+        <div class="mb-4">
+            <input
+                type="text"
+                class="p-2 mr-2 rounded-lg border border-indigo-500 focus:border-indigo-700 hover:border-indigo-800"
+                v-model="newName"
+            />
+            <button
+                @click="saveName"
+                class="p-2 bg-indigo-500 text-white rounded-lg"
+            >
+                Submit
+            </button>
+        </div>
         <div
             class="relative px-3 py-6 border border-gray-300 shadow-lg rounded-lg"
         >
@@ -27,6 +40,12 @@ const store = useStore() // store instead of `$store`
 const name = computed(() => {
     return store.state.user.name
 })
+
+const newName = ref('')
+
+function saveName() {
+    store.dispatch('saveName', newName)
+}
 </script>
 
 <style lang="scss" scoped></style>
