@@ -1,18 +1,18 @@
 export default{
-    state: () =>{
-        name: 'test'
-    },
+    state: () => ({
+        name:'master'
+    }),
 
     getters:{},
 
     mutations:{
-        SET_NAME(state, name){
-            state.name = name
+        SET_NAME(state, payload){
+            state.name = payload
         }
     },
 
     actions:{
-        serverName({commit}, data){
+        saveName({commit}, data){
             commit('SET_NAME', data)
         }
     }
