@@ -34,8 +34,10 @@
 import { BeakerIcon, HomeIcon } from '@heroicons/vue/solid'
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
-const store = useStore() // store instead of `$store`
+const store = useStore()
+const router = useRouter()
 
 const name = computed(() => {
     return store.state.user.name
@@ -44,7 +46,9 @@ const name = computed(() => {
 const newName = ref('')
 
 function saveName() {
-    store.dispatch('saveName', newName)
+    store.dispatch('saveName', newName.value)
+    newName.value = ''
+    router.push({ name: 'About' })
 }
 </script>
 
